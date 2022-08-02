@@ -29,4 +29,26 @@
   	<servlet-name>AdditionServlet</servlet-name>
   	<url-pattern>/additionServlet</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>GetHandler</servlet-name>
+    <servlet-class>com.servlets.example.GetHandler</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>GetHandler</servlet-name>
+    <url-pattern>/gethandler1</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>PostHandler</servlet-name>
+    <servlet-class>com.servlets.example.PostHandler</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>PostHandler</servlet-name>
+    <url-pattern>/posthandler1</url-pattern>
+  </servlet-mapping>
+     
+    
 </web-app>
