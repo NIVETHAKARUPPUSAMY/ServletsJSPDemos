@@ -10,11 +10,8 @@ public class ReadAndWriteSql  {
 	public static void main(String[] args) {
 		
 		InsertintoDB();
-		
 		updateDB();
-		
 		readDB();
-		
 		deleteDB();
 
 	}
