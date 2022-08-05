@@ -7,11 +7,16 @@
 <title>Hello World</title>
 </head>
 <body>
+
+	<jsp:include page="Header.jsp" />
+
 	<h1>Hello World !!</h1>
 	The time on the server is <%= new java.util.Date() %>
 	
 	<br/>
 	
 	Converting a string to uppercase: <%= new String("Hello world").toUpperCase() %>
+	
+	<jsp:include page="Footer.jsp" />
 </body>
 </html>
