@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -24,9 +25,7 @@ public class ReadProduct extends HttpServlet {
 			System.out.println("ReadProduct.init() method. DB connection created");
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = DriverManager.getConnection("jdbc:mysql://localhost/mydb", "root", "Nivetha@5642");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -35,17 +34,16 @@ public class ReadProduct extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		response.setContentType("text/html");
-		String Product_id = request.getParameter("Product_id");
 		
-		System.out.println("doGet");
+		int Product_id = Integer.parseInt(request.getParameter("Product_id"));
+		PrintWriter out=response.getWriter();
 		try (Statement statement = connection.createStatement();) {
 
 			// resultset = read from db where email = 'x'
 			// if resultset.hasnext() { pw.write("User already exists"); }
 
 			ResultSet results = statement.executeQuery("select * from Product where Product_id=?");
-			PrintWriter out = response.getWriter();
+			//PrintWriter out = response.getWriter();
 			out.println("<table>");
 			out.println("<tr>");
 			out.println("<th>Product_id</th>");
