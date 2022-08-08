@@ -1,0 +1,37 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add product</title>
+</head>
+<body>
+<h1>Product Registration</h1>
+	<form action="addproduct" method="post">
+		<table>
+			<tr>
+				<td>Product Id: </td>
+				<td><input name="Product_id" /></td>
+			</tr>
+			<tr>
+				<td>Product Name: </td>
+				<td><input name="Prodcut_name" type="text" /></td>
+			</tr>			
+			<tr>
+				<td>Cost: </td>
+				<td><input name="Cost" /></td>
+			</tr>
+			<tr>
+				<td>Availablity: </td>
+				<td><input name="Availablity"  /></td>
+			</tr>
+			<tr>
+				<td />
+				<td><input type="submit" value="Submit"/></td>
+			</tr>
+		</table>
+	</form>
+	<p><a href="Producthome.html">Home</a></p>
+</body>
+</html>

@@ -1,0 +1,12 @@
+package TagDemo;
+
+public class TestClass {
+	
+	String mycities = "";
+
+	public void testMethod() {
+		String mycities="";
+	}
+	
+
+}
