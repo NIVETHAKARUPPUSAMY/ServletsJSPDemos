@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -56,8 +57,29 @@ public class StudentDBUtil {
 		return students;
 	}
 
-	private void close(Connection conn, Statement stmt, ResultSet rs) {
+	public void addStudent(Student student) {
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String sql = "insert into student (firstname, lastname, email) values (?, ?, ?)";
+			stmt = conn.prepareStatement(sql);
+			
+			stmt.setString(1, student.getFirstName());
+			stmt.setString(2, student.getLastName());
+			stmt.setString(3, student.getEmailId());
+			
+			stmt.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(conn, stmt, null);
+		}
+	}
 
+	private void close(Connection conn, Statement stmt, ResultSet rs) {
 		try {
 			if (rs != null) rs.close();
 			if (stmt != null) stmt.close();
