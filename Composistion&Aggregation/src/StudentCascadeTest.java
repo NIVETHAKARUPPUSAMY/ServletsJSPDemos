@@ -7,7 +7,7 @@ import com.samples.domain.Student;
 import com.samples.domain.User;
 import com.samples.utils.HibernateUtil;
 
-public class StudentTest {
+public class StudentCascadeTest {
 
 	public static void main(String[] args) {
 		
@@ -19,13 +19,11 @@ public class StudentTest {
 
 			txn.begin();
 
-			Guide guide = new Guide("2000ABC001", "Mike Lawson", 1000);
-			Student student1 = new Student("SR001", "Max", guide,0);
-			Student student2 = new Student("SR002", "Bob", guide,0);
+		//	Guide guide = new Guide("2000XYZ003", "Robert Williams", 2000);
+			Guide guide = session.get(Guide.class,2L);
+			Student student5 = new Student("SR005", "Ed", guide, 23);
 			
-			session.save(guide);
-			session.save(student1);
-			session.save(student2);
+			session.persist(student5);
 			
 			txn.commit();
 

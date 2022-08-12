@@ -7,7 +7,7 @@ import com.samples.domain.Student;
 import com.samples.domain.User;
 import com.samples.utils.HibernateUtil;
 
-public class StudentTest {
+public class StudentOneToManyTest {
 
 	public static void main(String[] args) {
 		
@@ -19,13 +19,14 @@ public class StudentTest {
 
 			txn.begin();
 
-			Guide guide = new Guide("2000ABC001", "Mike Lawson", 1000);
-			Student student1 = new Student("SR001", "Max", guide,0);
-			Student student2 = new Student("SR002", "Bob", guide,0);
+			Guide guide = new Guide("2000XYZ003", "Robert Williams", 2000);
+			Student student1 = new Student("SR001", "John Smith", guide, 23);
+			Student student2 = new Student("SR002", "Amy Jackson", guide, 25);
 			
-			session.save(guide);
-			session.save(student1);
-			session.save(student2);
+			guide.getStudents().add(student1);
+			guide.getStudents().add(student2);
+			
+			session.persist(guide);
 			
 			txn.commit();
 
